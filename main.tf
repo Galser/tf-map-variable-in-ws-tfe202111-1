@@ -33,3 +33,6 @@ output "demo" {
   value = random_pet.demo.id
 }
 
+output "tags" {
+	value = var.additional_tags
+}
