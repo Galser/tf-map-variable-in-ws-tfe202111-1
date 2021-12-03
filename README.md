@@ -4,7 +4,7 @@ Reproduction/testing for the complex type variables in TFE 202111-1, for example
 # Assumption to test
 
 We plan to pass variable "additional_tags" (workspace variable ) as input parameters during resource creation.
-We have define variables.tf as
+We have defined variables.tf as
 
 ```Terraform
 variable "additional_tags" {
@@ -16,7 +16,7 @@ variable "additional_tags" {
 }
 ```
 
-We are able to get this working when we use file "terraform.auto.tfvars" with below entry
+We are able to get this working when we use the file "terraform.auto.tfvars" with below entry
 additional_tags = { team : "mydev" } but when we try to pass this as input variable of our workspace in terraform enterprise, we are not able to get it working. ( TFE v 202111-1 )
 
 
@@ -82,18 +82,18 @@ Outputs:
 demo = "comic-aardvark"
 ```
 
-# Test with reassigning variable at the workspace leve in TFE
+# Test with reassigning variable at the workspace level in TFE
 
 ## Failing output examples : 
 
-If the variable defineds the map in the ".tfvars" syntax it is going to fail. Let's test by assifgining on the workspace new variable in tbhe same way as in the initial claim :
+If the variable defines the map in the ".tfvars" syntax it is going to fail. Let's test by assigning on the workspace a new variable in the same way as in the initial claim :
 
 ```Terraform
 { team : "mydev" }
 ```
 
-E.g. we are using colon to separate key index from value in map. and that is no a syntatically correct HCL 
-Output of the plan going to be : 
+E.g. we are using a colon to separate key index from the value in the map. and that is not a syntactically correct HCL 
+The output of the plan going to be : 
 
 ```Terraform
 terraform apply
@@ -124,7 +124,7 @@ Initializing Terraform configuration...
 
 ## Working output and definition example : 
 
-If variable defined with HCL checbox and in pure HCL with euqal sign connecting key and value in the map like this : 
+If variable defined with HCL checkbox and in pure HCL with equal sign connecting key and value in the map like this : 
 ```
 { team = "mydev" }
 ```
@@ -193,7 +193,7 @@ tags = tomap({
 })
 ```
 
-Which is correct.
+As expected, and which is correct.
 
 
 
